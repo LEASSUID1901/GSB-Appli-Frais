@@ -32,7 +32,7 @@
                         $numMois = $unMois['numMois'];
                         if ($mois == $moisASelectionner) {
                             ?>
-                            <option selected value="<?php echo $mois ?>">
+                            <option selected value="<?php echo $mois ?>"> <!-- option selected value = menu deroulant la date par defaut !-->
                                 <?php echo $numMois . '/' . $numAnnee ?> </option>
                             <?php
                         } else {

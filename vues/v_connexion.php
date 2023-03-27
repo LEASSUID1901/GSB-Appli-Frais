@@ -14,6 +14,8 @@
  * @link      http://www.reseaucerta.org Contexte « Laboratoire GSB »
  */
 ?>
+<?php include ("v_enteteDeconnecte.php");
+?>
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
         <div class="panel panel-default">

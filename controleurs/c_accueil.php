@@ -15,7 +15,18 @@
  */
 
 if ($estConnecte) {
+    if ($_SESSION['id2']==1){
     include 'vues/v_accueil.php';
-} else {
+    }
+    if ($_SESSION['id2']==2){
+    include 'vues/v_accueilcomptable.php';
+    }  
+
+}else {
     include 'vues/v_connexion.php';
 }
+
+//$_GET / Afficher les données dans l'URL
+//$_POST VIA LE FORMULAIRE 
+//$_SESSION : stock la donnée dans le serveur pour l'authentification, 
+//valeur qui peut etre récupéré dans n'importe quelle page

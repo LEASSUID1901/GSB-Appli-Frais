@@ -21,7 +21,7 @@
     <div class="panel-body">
         <strong><u>Etat :</u></strong> <?php echo $libEtat ?>
         depuis le <?php echo $dateModif ?> <br> 
-        <strong><u>Montant validé :</u></strong> <?php echo $montantValide ?>
+        <strong><u>Montant validé :</u></strong> <?php echo $montantValide ?> <!-- strong : en gras !-->
     </div>
 </div>
 <div class="panel panel-info">
@@ -31,7 +31,7 @@
             <?php
             foreach ($lesFraisForfait as $unFraisForfait) {
                 $libelle = $unFraisForfait['libelle']; ?>
-                <th> <?php echo htmlspecialchars($libelle) ?></th>
+                <th> <?php echo htmlspecialchars($libelle) ?></th> <!-- empecher l'utilisateur de mettre des caractère hors norme !-->
                 <?php
             }
             ?>

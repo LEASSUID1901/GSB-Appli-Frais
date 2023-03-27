@@ -33,11 +33,14 @@ function estConnecte()
  *
  * @return null
  */
-function connecter($idVisiteur, $nom, $prenom)
+function connecter($idVisiteur, $nom, $prenom,$type,$id2)
 {
     $_SESSION['idVisiteur'] = $idVisiteur;
     $_SESSION['nom'] = $nom;
     $_SESSION['prenom'] = $prenom;
+    $_SESSION['nom2'] = $type;
+    $_SESSION['id2'] = $id2;
+
 }
 
 /**
@@ -228,10 +231,10 @@ function valideInfosFrais($dateFrais, $libelle, $montant)
  */
 function ajouterErreur($msg)
 {
-    if (!isset($_REQUEST['erreurs'])) {
-        $_REQUEST['erreurs'] = array();
+    if (!isset($_REQUEST['erreurs'])) { //isset : existe //Traduction : Si le tableau erreur n'existe pas
+        $_REQUEST['erreurs'] = array();// alors créer le tableau erreur
     }
-    $_REQUEST['erreurs'][] = $msg;
+    $_REQUEST['erreurs'][] = $msg; //créer un tableau et mettre à l'interieur le message d'erreur
 }
 
 /**

@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Vue Erreurs
+ * Vue Entête
  *
  * PHP Version 7
  *
@@ -14,10 +15,12 @@
  * @link      http://www.reseaucerta.org Contexte « Laboratoire GSB »
  */
 ?>
-<div class="alert alert-danger" role="alert">
-    <?php
-    foreach ($_REQUEST['erreurs'] as $erreur) { //Foreach : pour parcourir un tableau
-        echo '<p>' . htmlspecialchars($erreur) . '</p>';
-    }
-    ?>
-</div>
+ <?php
+$uc = filter_input(INPUT_GET, 'uc', FILTER_SANITIZE_STRING);
+?>
+<h1>
+    <img src="./images/logo.jpg"
+         class="img-responsive center-block"
+         alt="Laboratoire Galaxy-Swiss Bourdin"
+         title="Laboratoire Galaxy-Swiss Bourdin">
+</h1>
