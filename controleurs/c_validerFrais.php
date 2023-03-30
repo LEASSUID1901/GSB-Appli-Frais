@@ -66,7 +66,8 @@ switch ($action) {
 
     case 'validerfiche':
         $levisiteur = filter_input(INPUT_GET, 'id_visiteur', FILTER_SANITIZE_STRING);
-        $pdo->majEtatFicheFrais($levisiteur, "202212", "VA"); //Modifie le statut
+        $lemois = filter_input(INPUT_GET, 'mois', FILTER_SANITIZE_STRING);
+        $pdo->majEtatFicheFrais($levisiteur,  $lemois, "VA"); //Modifie le statut
         include 'vues/v_statutValider.php';
         break;
 }

@@ -89,6 +89,6 @@ if ($action == 'modifierforfait')
         <input id="ok" type="submit" value="Supprimer" class="btn btn-success" role="button">
     </div>
 </form>
-<a href="index.php?uc=validerFrais&action=validerfiche&id_visiteur=<?= $levisiteur ?>">
+<a href="index.php?uc=validerFrais&action=validerfiche&id_visiteur=<?= $levisiteur ?>&mois=<?= $lemois ?>">
     <button type="button" class="btn btn-primary">Valider la fiche </button>
 </a>
