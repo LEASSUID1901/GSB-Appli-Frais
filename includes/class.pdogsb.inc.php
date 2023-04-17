@@ -363,7 +363,7 @@ class PdoGsb
         $requetePrepare->bindParam(':unMois', $mois, PDO::PARAM_STR);
         $requetePrepare->bindParam(':unIdVisiteur', $idVisiteur, PDO::PARAM_STR);
         $requetePrepare->execute();
-        if (!$requetePrepare->fetch()) {
+        if ($requetePrepare->fetch()) {
             $boolReturn = true;
         }
         return $boolReturn;
