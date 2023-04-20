@@ -60,6 +60,7 @@ class PdoGsb
         PdoGsb::$monPdo->query('SET CHARACTER SET utf8');
     }
 
+
     /**
      * Méthode destructeur appelée dès qu'il n'y a plus de référence sur un
      * objet donné, ou dans n'importe quel ordre pendant la séquence d'arrêt.
@@ -68,6 +69,22 @@ class PdoGsb
     {
         PdoGsb::$monPdo = null;
     }
+    public function getDate($lignefraishorsforfait)
+    {
+        $requetePrepare = PdoGsb::$monPdo->prepare(
+            'SELECT *
+            FROM lignefraishorsforfait
+            WHERE id = :unID'
+
+        );
+        $requetePrepare->bindParam(':unID', $lignefraishorsforfait, PDO::PARAM_INT);
+        $requetePrepare->execute();
+        $date = $requetePrepare->fetch();
+        return $date['date'];
+        $jour = substr($date, 9, 2);
+    }
+
+
 
     /**
      * Fonction statique qui crée l'unique instance de la classe
@@ -141,7 +158,7 @@ class PdoGsb
     public function getLesMoisVisiteur()
     {
         $requetePrepare = PdoGSB::$monPdo->prepare(
-            'SELECT fichefrais.mois AS mois FROM fichefrais '
+            'SELECT DISTINCT fichefrais.mois AS mois FROM fichefrais '
                 . 'ORDER BY mois desc'
         );
         $requetePrepare->execute();
@@ -155,7 +172,8 @@ class PdoGsb
 
             $anneeFormat = substr($mois['mois'], 0, 4);
             $moisFormat = substr($mois['mois'], 4, 2);
-            $moisFormates[$mois['mois']] = array('mois' => $moisFormat, 'annee' => $anneeFormat);
+            $joursFormat = substr($mois['mois'], 6, 2);
+            $moisFormates[$mois['mois']] = array('jours' => $joursFormat, 'mois' => $moisFormat, 'annee' => $anneeFormat);
         }
 
         return $moisFormates; // ['202212'=>[annee=>2022, mois=>12], '202301' => [annee=>2023, mois=>01] ... ]
@@ -176,7 +194,7 @@ class PdoGsb
     public function getInfosVisiteur($login, $mdp)
     {
         $requetePrepare = PdoGsb::$monPdo->prepare(
-            'SELECT visiteur.id AS id, visiteur.nom AS nom, '
+            'SELECT DISTINCT visiteur.id AS id, visiteur.nom AS nom, '
                 . 'visiteur.prenom AS prenom, type.nom AS nom2, type.id AS id2 '
                 . 'FROM visiteur join type on visiteur.type= type.id '
                 . 'WHERE visiteur.login = :unLogin AND visiteur.mdp = :unMdp'

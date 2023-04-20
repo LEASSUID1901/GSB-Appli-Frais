@@ -42,3 +42,4 @@ FROM visiteur inner join type on visiteur.type=type.id;
 -- script sql a lancer en debut de mois
 UPDATE fichefrais
 SET idetat	= "CL" 
+where idetat='CR'

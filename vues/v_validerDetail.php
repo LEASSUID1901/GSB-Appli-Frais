@@ -3,7 +3,10 @@ if ($action == 'modifierforfait')
     echo "<p>les frais forfaitise ont bien ete modifiés</p>";
 
 ?>
-
+Informations concernant le visiteur :
+</br>
+identifiant: <?= $_SESSION['user'] ?></br>
+mois: <?= $_SESSION['mois'] ?></br>
 <form method="post" action="index.php?uc=validerFrais&action=modifierforfait&visiteur=<?php echo $levisiteur ?>&mois=<?php echo $lemois ?>">
 
     <div class="panel panel-info">
@@ -87,8 +90,10 @@ if ($action == 'modifierforfait')
             ?>
         </table>
         <input id="ok" type="submit" value="Supprimer" class="btn btn-success" role="button">
-    </div>
+        <input id="ok1" type="submit" value="Reporter" class="btn btn-success" role="button">
+
 </form>
+</div>
 <a href="index.php?uc=validerFrais&action=validerfiche&id_visiteur=<?= $levisiteur ?>&mois=<?= $lemois ?>">
     <button type="button" class="btn btn-primary">Valider la fiche </button>
 </a>
