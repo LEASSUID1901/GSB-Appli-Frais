@@ -35,13 +35,13 @@
                     $idFrais = $unFraisForfait['idfrais'];
 
                     $quantite = $unFraisForfait['quantite']; ?>
-                   <?php
-                        }
-                            ?>
+                <?php
+                }
+                ?>
             </tr>
         </table>
 
-       
+
 </form>
 </div>
 
@@ -64,12 +64,21 @@
                     <td><?php echo $libelle ?></td>
                     <td><?php echo $montant ?></td>
                 </tr>
+
             <?php
             }
             ?>
         </table>
-       
+
     </div>
-    <a href= "index.php?uc=SaisirPayementFrais&action=modifierstatut&visiteur=<?=$levisiteur ?>">
-    <button type= "button" class="btn btn-primary">Mettre en paiement </button>
+    <?php
+    if ($etat['idetat'] == 'MP') { ?>
+         <a= href="index.php?uc=SaisirPayementFrais&action=rembourse&visiteur=<?= $levisiteur ?>">
+                <button id="ok" type="submit" value="Valider" class="btn btn-primary" role="button"> Rembourser la fiche </button>
+    <?php } else { ?>
+        <a href="index.php?uc=SaisirPayementFrais&action=modifierstatut&visiteur=<?= $levisiteur ?>">
+            <button type="button" class="btn btn-primary">Mettre en paiement </button>
+            
+        </a>
+    <?php } ?>
 </form>

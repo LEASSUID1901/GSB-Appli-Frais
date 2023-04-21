@@ -29,7 +29,7 @@ $uc = filter_input(INPUT_GET, 'uc', FILTER_SANITIZE_STRING); //Lire 'uc' dans l'
 // Je pars dans la page connexion dans un cas :
 // si 'uc' existe et que je ne suis pas connecté
 if ($uc && !$estConnecte) {
-    $uc = 'connexion';
+    $uc = 'connexion'; 
 // Je suis connecté mais 'uc' est vide (Pas d'apparition dans L'Url)
 } elseif (empty($uc)) {
     $uc = 'accueil';

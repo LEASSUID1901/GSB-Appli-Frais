@@ -589,4 +589,21 @@ class PdoGsb
         $requetePrepare->bindParam(':unMois', $mois, PDO::PARAM_STR);
         $requetePrepare->execute();
     }
+    public function getEtatFiche($user,$mois)
+    {
+        $requetePrepare = PdoGSB::$monPdo->prepare(
+        'SELECT  idetat FROM fichefrais WHERE idvisiteur = :unIdVisiteur AND mois=:unmois');
+        $requetePrepare->bindParam(':unIdVisiteur', $user, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unmois', $mois, PDO::PARAM_STR);
+        $requetePrepare->execute();
+        $etat= $requetePrepare->fetch();
+        return $etat;
+    
+    }
+   
+    
+    
+    
+
 }
+
